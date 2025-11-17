@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaCha - Ask Any Question, Get Real Answers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>ChaCha</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/">About</a></li>
+          <li><a href="/">Become a Guide</a></li>
+          <li><a href="/login" class="btn-login">Login</a></li>
+          <li><a href="/register" class="btn-register">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Ask Any Question</h2>
+        <p>Get real answers from real people</p>
+        <div class="search-box">
+          <form id="question-form">
+            <input type="text" id="question-input" placeholder="Ask your question...">
+            <button type="submit">Ask Now</button>
+          </form>
+        </div>
+        <div class="tags">
+          <span>Popular:</span>
+          <a href="#">Technology</a>
+          <a href="#">Sports</a>
+          <a href="#">Movies</a>
+          <a href="#">Travel</a>
+          <a href="#">Food</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2>How ChaCha Works</h2>
+      <div class="steps">
+        <div class="step">
+          <i class="fas fa-question-circle"></i>
+          <h3>Ask a Question</h3>
+          <p>Type any question into the search box and submit</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-user-friends"></i>
+          <h3>Human Guides</h3>
+          <p>Our guides search for the best possible answer</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-comment-dots"></i>
+          <h3>Get Your Answer</h3>
+          <p>Receive a real answer from a real person</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recent-questions">
+    <div class="container">
+      <h2>Recent Questions</h2>
+      <div class="questions" id="recent-questions-list">
+        <!-- Questions will be loaded here via JavaScript -->
+        <p class="loading">Loading recent questions...</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>ChaCha</h3>
+          <p>Human-guided search engine</p>
+        </div>
+        <div class="footer-links">
+          <h4>Links</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">About</a></li>
+            <li><a href="/">Contact</a></li>
+            <li><a href="/">Privacy Policy</a></li>
+            <li><a href="/">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <p>Email: info@chacha.com</p>
+          <p>Phone: 1-800-2ChaCha</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ChaCha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}정보자원관리원 굿즈 판매 플랫폼{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">
+          <a href="/">정보자원관리원 굿즈 판매 플랫폼</a>
+        </div>
+        <nav class="nav">
+          {% if g.user %}
+          <a href="/board">공지사항</a>
+          <a href="/store">스토어</a>
+          <a href="/market">판매장터(BETA)</a>
+          <a href="/profile/{{ g.user }}">프로필</a>
+          <form method="post" action="/logout" class="inline" style="margin-left:12px">
+            <button class="btn" type="submit">로그아웃</button>
+          </form>
+          {% else %}
+          <a href="/login">로그인</a>
+          <a href="/register">회원가입</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© 2025 정보자원관리원</div>
+    </footer>
+  </body>
+  </html>
+
+

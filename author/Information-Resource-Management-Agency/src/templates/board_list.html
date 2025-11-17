@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}공지사항 목록{% endblock %}
+{% block content %}
+  <div class="page-header">
+    <h2>공지사항</h2>
+    <a class="btn" href="/board/new">글쓰기</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr><th>제목</th><th>작성자</th></tr>
+    </thead>
+    <tbody>
+      {% for p in posts %}
+      <tr>
+        <td>{{ p.title }}</td>
+        <td>{{ p.author }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="2" class="empty">등록된 공지가 없습니다.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+

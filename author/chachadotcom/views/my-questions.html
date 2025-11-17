@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Questions - ChaCha</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/questions.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1><a href="/">ChaCha</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/my-questions">My Questions</a></li>
+          <li><a href="/profile" class="btn-login">Profile</a></li>
+          <li><a href="/api/users/logout" id="logout-btn" class="btn-register">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="questions-container">
+    <div class="container">
+      <div class="questions-header">
+        <h2>My Questions</h2>
+        <button id="ask-button" class="btn-ask">Ask a New Question</button>
+      </div>
+      
+      <div id="question-form-container" class="hidden">
+        <form id="new-question-form" class="question-form">
+          <div class="form-group">
+            <label for="question-text">Your Question</label>
+            <textarea id="question-text" name="question-text" rows="4" placeholder="Type your question here..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="General">General</option>
+              <option value="Technology">Technology</option>
+              <option value="Sports">Sports</option>
+              <option value="Movies">Movies</option>
+              <option value="Travel">Travel</option>
+              <option value="Food">Food</option>
+              <option value="Health">Health</option>
+              <option value="Education">Education</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="button" id="cancel-question-btn" class="btn-secondary">Cancel</button>
+            <button type="submit" class="btn-primary">Submit Question</button>
+          </div>
+        </form>
+      </div>
+      
+      <div id="my-questions" class="questions-list">
+        <p class="loading">Loading your questions...</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="question-detail-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="question-detail-container">
+        <div class="question-detail-header">
+          <h2 id="modal-question-text">Question</h2>
+          <p id="modal-question-meta">Asked by <span id="modal-question-user">User</span> on <span id="modal-question-date">Date</span></p>
+          <p id="modal-question-category" class="question-category">Category</p>
+          <p id="modal-question-status" class="question-status">Status</p>
+        </div>
+        
+        <div id="question-answers">
+          <h3>Answers</h3>
+          <div id="answers-list">
+            <p class="no-answers">No answers yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>ChaCha</h3>
+          <p>Human-guided search engine</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ChaCha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/my-questions.js"></script>
+</body>
+</html> 

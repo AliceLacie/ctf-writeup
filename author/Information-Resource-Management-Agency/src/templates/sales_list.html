@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}판매장터(BETA){% endblock %}
+{% block content %}
+  <div class="page-header">
+    <h2>판매 굿즈</h2>
+    <a class="btn" href="/market/new">판매 등록</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr><th class="center">이름</th><th class="center">가격</th><th class="center">설명</th><th class="center">동작</th></tr>
+    </thead>
+    <tbody>
+      {% for g in goods %}
+      <tr>
+        <td class="center">{{ g.name }}</td>
+        <td class="center">{{ g.price }}</td>
+        <td class="center">{{ g.description }}</td>
+        <td class="center">
+          <div>
+            <form method="post" action="/market/{{ g.id }}/buy" class="inline">
+              <button class="btn" type="submit">구매</button>
+            </form>
+            <form method="post" action="/market/{{ g.id }}/donate" class="inline">
+              <input name="username" placeholder="기부자" required />
+              <input name="amount" type="number" min="1" placeholder="금액" required />
+              <button class="btn" type="submit">후원</button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td class="empty" colspan="5">판매 등록된 굿즈가 없습니다.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+

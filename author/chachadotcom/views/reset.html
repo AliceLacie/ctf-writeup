@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Password - ChaCha</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1><a href="/">ChaCha</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/login" class="btn-login">Login</a></li>
+          <li><a href="/register" class="btn-register">Register</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="auth-container">
+    <div class="auth-form" id="reset-step1">
+      <h2>Reset Password</h2>
+      <p>Enter your email to receive a password reset link or token.</p>
+      <form id="reset-request-form">
+        <div class="form-group">
+          <label for="reset-email">Email</label>
+          <input type="email" id="reset-email" name="email" required>
+        </div>
+        <button type="submit" class="btn-submit">Send Reset Link</button>
+      </form>
+      <div class="auth-alternate">
+        <p>Remembered your password? <a href="/login">Login</a></p>
+      </div>
+      <div id="reset-step1-message" class="auth-alternate"></div>
+    </div>
+
+    <div class="auth-form" id="reset-step2" style="display:none;">
+      <h2>Set New Password</h2>
+      <p>Enter the token you received and your new password.</p>
+      <form id="reset-password-form">
+        <div class="form-group">
+          <label for="reset-token">Reset Token</label>
+          <input type="text" id="reset-token" name="token" required>
+        </div>
+        <div class="form-group">
+          <label for="reset-new-password">New Password</label>
+          <input type="password" id="reset-new-password" name="password" required>
+        </div>
+        <button type="submit" class="btn-submit">Change Password</button>
+      </form>
+      <div class="auth-alternate">
+        <p>Back to <a href="/login">Login</a></p>
+      </div>
+      <div id="reset-step2-message" class="auth-alternate"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>ChaCha</h3>
+          <p>Human-guided search engine</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ChaCha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    // Reset Password Step 1: Request token
+    document.getElementById('reset-request-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('reset-email').value;
+      const messageDiv = document.getElementById('reset-step1-message');
+      messageDiv.textContent = '';
+      try {
+        const res = await fetch('/api/auth/reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          messageDiv.textContent = 'A reset token has been sent to your email.';
+          document.getElementById('reset-step1').style.display = 'none';
+          document.getElementById('reset-step2').style.display = 'block';
+        } else {
+          messageDiv.textContent = data.message || 'Failed to send reset token.';
+        }
+      } catch (err) {
+        messageDiv.textContent = 'Server error. Please try again later.';
+      }
+    });
+
+    // Reset Password Step 2: Set new password
+    document.getElementById('reset-password-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const token = document.getElementById('reset-token').value;
+      const password = document.getElementById('reset-new-password').value;
+      const messageDiv = document.getElementById('reset-step2-message');
+      messageDiv.textContent = '';
+      try {
+        const res = await fetch('/api/auth/reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token, password })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          messageDiv.textContent = 'Password has been reset successfully. You can now log in.';
+        } else {
+          messageDiv.textContent = data.message || 'Failed to reset password.';
+        }
+      } catch (err) {
+        messageDiv.textContent = 'Server error. Please try again later.';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+services:
+  chacha:
+    build: .
+    ports:
+      - 3000:3000
+    platform: linux/amd64
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/chachadb
+    restart: always
+  
+  mongo:
+    image: mongo

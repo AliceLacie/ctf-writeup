@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}스토어{% endblock %}
+{% block content %}
+  <div class="page-header">
+    <h2>스토어 굿즈</h2>
+  </div>
+  <table class="table">
+    <thead>
+      <tr><th class="center">이름</th><th class="center">가격</th><th class="center">설명</th><th class="center">구매</th></tr>
+    </thead>
+    <tbody>
+      {% for g in goods %}
+      <tr>
+        <td class="center">{{ g.name }}</td>
+        <td class="center">{{ g.price }}</td>
+        <td class="center">{{ g.description }}</td>
+        <td class="center">
+          <form method="post" action="/store/{{ g.id }}/buy">
+            <button class="btn" type="submit">구매</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td class="empty" colspan="4">굿즈가 없습니다.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+

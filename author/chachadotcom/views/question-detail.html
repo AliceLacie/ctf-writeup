@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Detail - ChaCha</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/question-detail.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1><a href="/">ChaCha</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/my-questions">My Questions</a></li>
+          <li><a href="/profile" class="btn-login">Profile</a></li>
+          <li><a href="/api/users/logout" id="logout-btn" class="btn-register">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="question-detail-container">
+    <div class="container">
+      <div class="question-detail-content">
+        <div class="question-header">
+          <h2 id="question-text">Loading question...</h2>
+          <div class="question-meta">
+            <p>Asked by <span id="question-user">User</span> on <span id="question-date">Date</span></p>
+            <p id="question-category" class="question-category">Category</p>
+            <p id="question-status" class="question-status">Status</p>
+          </div>
+        </div>
+        
+        <div class="answers-section">
+          <h3>Answers</h3>
+          <div id="answers-list" class="answers-list">
+            <p class="loading">Loading answers...</p>
+          </div>
+          
+          <div id="answer-form-container" class="answer-form-container">
+            <h4>Post an Answer</h4>
+            <form id="new-answer-form">
+              <div class="form-group">
+                <textarea id="answer-text" name="answer-text" rows="4" placeholder="Your answer..."></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">Submit Answer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Answer Edit Modal (hidden by default) -->
+  <div id="edit-answer-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" id="close-edit-modal">&times;</span>
+      <h4>Edit Answer</h4>
+      <form id="edit-answer-form" enctype="multipart/form-data">
+        <div class="form-group">
+          <textarea id="edit-answer-text" name="edit-answer-text" rows="4" placeholder="Edit your answer..."></textarea>
+        </div>
+        <div class="form-group">
+          <input type="file" id="edit-answer-image" name="image" accept="image/*">
+          <div id="edit-image-preview" style="margin-top:10px;"></div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Update Answer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>ChaCha</h3>
+          <p>Human-guided search engine</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ChaCha. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/question-detail.js"></script>
+</body>
+</html> 
